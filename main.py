@@ -7,5 +7,7 @@ if __name__ == '__main__':
     for i in range(0, 10):
         tree.insert(random.randint(1, 30))
     tree.print_inorder(tree.root)
+    k = tree.root.right
+    index = tree.os_rank(k)
     print()
-    print(tree.os_select(9).key)
+    print("Rank of node " + str(k.key) + " = " + str(index))

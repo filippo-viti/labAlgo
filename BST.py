@@ -51,5 +51,22 @@ class BST:
             self.__counter += 1
             return self.__os_select_tree_walk(x.right, i)
 
-    def os_rank(self, x):
-        pass
+    def os_rank(self, k):
+        self.__counter = 0
+        return self.__os_rank_tree_walk(self.root, k)
+
+    def __os_rank_tree_walk(self, x, k):
+        if x is None:
+            return None
+
+        if x == k:
+            self.__counter += 1
+            return self.__counter
+
+        left_index = self.__os_rank_tree_walk(x.left, k)
+        if left_index is not None:
+            return left_index
+        if self.__counter == left_index:
+            return x.value
+        self.__counter += 1
+        return self.__os_rank_tree_walk(x.right, k)
