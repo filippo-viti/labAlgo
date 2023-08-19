@@ -6,11 +6,14 @@ class RedBlackTree:
             self.right = None
             self.p = None
             self.color = color  # False = Black, True = Red
-            self.size = 0
+            self.size = 1
 
     def __init__(self):
-        self.root = None
         self.NIL = self.Node(None, False)
+        self.NIL.size = 0
+        self.root = self.NIL
+        self.root.p = self.NIL
+
 
     def left_rotate(self, x):
         y = x.right
@@ -47,6 +50,7 @@ class RedBlackTree:
         x.size = x.left.size + x.right.size + 1
 
     def insert(self, z):
+        z = self.Node(z, False)
         y = self.NIL
         x = self.root
         while x != self.NIL:
