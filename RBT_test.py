@@ -8,7 +8,7 @@ import numpy as np
 
 from RedBlackTree import RedBlackTree
 
-MAX_SAMPLE_SIZE = 10000
+MAX_SAMPLE_SIZE = 1000
 
 
 def fill(t, n):
@@ -42,11 +42,20 @@ def plot_os_select(data):
     ax.set_ylabel('time')
     ax.set_title("OS_SELECT")
     ax.legend()
-    plt.show()
+    plt.savefig('graphs/RBT/os_select.png')
 
 
 def plot_os_rank(data):
-    pass
+    fig, ax = plt.subplots()
+    x = np.linspace(1, MAX_SAMPLE_SIZE, MAX_SAMPLE_SIZE)
+    ax.plot(x, data[0], label='Worst case')
+    ax.plot(x, data[1], label='Average case')
+    ax.plot(x, data[2], label='Best case')
+    ax.set_xlabel('n')
+    ax.set_ylabel('time')
+    ax.set_title("OS_RANK")
+    ax.legend()
+    plt.savefig('graphs/RBT/os_rank.png')
 
 
 if __name__ == '__main__':
@@ -70,15 +79,15 @@ if __name__ == '__main__':
         os_select_times[2].append(os_select_best_time)
 
         # os_rank tests
-        # os_rank_times[0].append(os_rank_test(tree, os_select_worst_result))
-        # os_rank_times[1].append(os_rank_test(tree, os_select_avg_result))
-        # os_rank_times[2].append(os_rank_test(tree, os_select_best_result))
+        os_rank_times[0].append(os_rank_test(tree, os_select_worst_result))
+        os_rank_times[1].append(os_rank_test(tree, os_select_avg_result))
+        os_rank_times[2].append(os_rank_test(tree, os_select_best_result))
 
         del tree
         gc.enable()
 
     plot_os_select(os_select_times)
-    # plot_os_rank(os_rank_times)
+    plot_os_rank(os_rank_times)
 
     end = datetime.now()
     elapsed_time = (end - start).total_seconds()

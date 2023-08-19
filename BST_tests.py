@@ -42,11 +42,20 @@ def plot_os_select(data):
     ax.set_ylabel('time')
     ax.set_title("OS_SELECT")
     ax.legend()
-    plt.show()
+    plt.savefig('graphs/BST/os_select.png')
 
 
 def plot_os_rank(data):
-    pass
+    fig, ax = plt.subplots()
+    x = np.linspace(1, MAX_SAMPLE_SIZE, MAX_SAMPLE_SIZE)
+    ax.plot(x, data[0], label='Worst case')
+    ax.plot(x, data[1], label='Average case')
+    ax.plot(x, data[2], label='Best case')
+    ax.set_xlabel('n')
+    ax.set_ylabel('time')
+    ax.set_title("OS_RANK")
+    ax.legend()
+    plt.savefig('graphs/BST/os_rank.png')
 
 
 if __name__ == '__main__':
