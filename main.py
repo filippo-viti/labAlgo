@@ -1,13 +1,9 @@
-import random
-
-from BST import BST
+from RedBlackTree import RedBlackTree
 
 if __name__ == '__main__':
-    tree = BST()
-    for i in range(0, 10):
-        tree.insert(random.randint(1, 30))
-    tree.print_inorder(tree.root)
-    k = tree.root.right
-    index = tree.os_rank(k)
-    print()
-    print("Rank of node " + str(k.key) + " = " + str(index))
+    rbt = RedBlackTree()
+    test_set = [2, 5, 6, 10, 15, 1, 4, 3, 9, 11]
+    for i in range(10):
+        rbt.insert(test_set[i])
+
+    print(rbt.os_select(rbt.root, 1).key)

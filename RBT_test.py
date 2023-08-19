@@ -8,12 +8,12 @@ import numpy as np
 
 from RedBlackTree import RedBlackTree
 
-MAX_SAMPLE_SIZE = 1000
+MAX_SAMPLE_SIZE = 10000
 
 
 def fill(t, n):
     for i in range(n):
-        t.insert(random.randint(1, n))
+        t.insert(random.randint(1, 5000))
 
 
 def os_select_test(l, i):
@@ -61,9 +61,9 @@ if __name__ == '__main__':
 
         gc.disable()
         # os_select tests
-        os_select_worst_time, os_select_worst_result = os_select_test(tree, n - 1)
-        os_select_avg_time, os_select_avg_result = os_select_test(tree, n // 2)
-        os_select_best_time, os_select_best_result = os_select_test(tree, 0)
+        os_select_worst_time, os_select_worst_result = os_select_test(tree, n)
+        os_select_avg_time, os_select_avg_result = os_select_test(tree, (n // 2) + 1)
+        os_select_best_time, os_select_best_result = os_select_test(tree, 1)
 
         os_select_times[0].append(os_select_worst_time)
         os_select_times[1].append(os_select_avg_time)
