@@ -1,4 +1,4 @@
-from RedBlackTree import RedBlackTree
+from data_structures.RedBlackTree import RedBlackTree
 
 if __name__ == '__main__':
     rbt = RedBlackTree()

@@ -1,9 +1,7 @@
-class OrderedList:
-    class Node:
-        def __init__(self, value=None):
-            self.value = value
-            self.next = None
+from data_structures.OrderedListNode import OrderedListNode
 
+
+class OrderedList:
     def __init__(self):
         self.head = None
 
@@ -17,7 +15,7 @@ class OrderedList:
         return r
 
     def insert(self, value):
-        new_node = self.Node(value)
+        new_node = OrderedListNode(value)
         if self.head is None:
             new_node.next = self.head
             self.head = new_node

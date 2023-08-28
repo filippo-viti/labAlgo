@@ -1,15 +1,9 @@
-class RedBlackTree:
-    class Node:
-        def __init__(self, key, color):
-            self.key = key
-            self.left = None
-            self.right = None
-            self.p = None
-            self.color = color  # False = Black, True = Red
-            self.size = 1
+from data_structures.RedBlackTreeNode import RedBlackTreeNode
 
+
+class RedBlackTree:
     def __init__(self):
-        self.NIL = self.Node(None, False)
+        self.NIL = RedBlackTreeNode(None, False)
         self.NIL.size = 0
         self.root = self.NIL
         self.root.p = self.NIL
@@ -50,7 +44,7 @@ class RedBlackTree:
         x.size = x.left.size + x.right.size + 1
 
     def insert(self, z):
-        z = self.Node(z, False)
+        z = RedBlackTreeNode(z, False)
         y = self.NIL
         x = self.root
         while x != self.NIL:

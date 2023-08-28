@@ -6,7 +6,7 @@ from datetime import datetime
 import matplotlib.pyplot as plt
 import numpy as np
 
-from OrderedList import OrderedList
+from data_structures.OrderedList import OrderedList
 
 MAX_SAMPLE_SIZE = 1000
 

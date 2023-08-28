@@ -1,11 +1,7 @@
-class BinarySearchTree:
-    class Node:
-        def __init__(self, key):
-            self.key = key
-            self.left = None
-            self.right = None
-            self.p = None
+from data_structures.BinarySearchTreeNode import BinarySearchTreeNode
 
+
+class BinarySearchTree:
     def __init__(self):
         self.root = None
         self.__counter = 0
@@ -13,7 +9,7 @@ class BinarySearchTree:
     def insert(self, z):
         y = None
         x = self.root
-        z = self.Node(z)
+        z = BinarySearchTreeNode(z)
         while x is not None:
             y = x
             if z.key < x.key:

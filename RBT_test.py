@@ -6,7 +6,7 @@ from datetime import datetime
 import matplotlib.pyplot as plt
 import numpy as np
 
-from RedBlackTree import RedBlackTree
+from data_structures.RedBlackTree import RedBlackTree
 
 MAX_SAMPLE_SIZE = 1000
 
