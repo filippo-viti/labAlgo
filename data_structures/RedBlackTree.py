@@ -98,14 +98,17 @@ class RedBlackTree(DataStructure):
                     self.left_rotate(z.p.p)
         self.root.color = False
 
-    def os_select(self, x, i):
+    def os_select(self, i):
+        return self.__os_select_recursive(self.root, i)
+
+    def __os_select_recursive(self, x, i):
         r = x.left.size + 1
         if i == r:
             return x
         elif i < r:
-            return self.os_select(x.left, i)
+            return self.__os_select_recursive(x.left, i)
         else:
-            return self.os_select(x.right, i - r)
+            return self.__os_select_recursive(x.right, i - r)
 
     def os_rank(self, x):
         r = x.left.size + 1

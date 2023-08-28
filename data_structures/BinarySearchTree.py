@@ -34,7 +34,6 @@ class BinarySearchTree(DataStructure):
     def os_select(self, i):
         self.__counter = 0
         return self.__os_select_tree_walk(self.root, i)
-        pass
 
     def __os_select_tree_walk(self, x, i):
         if x is None:
