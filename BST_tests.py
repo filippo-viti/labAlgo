@@ -5,8 +5,7 @@ from datetime import datetime
 
 import matplotlib.pyplot as plt
 import numpy as np
-
-from BST import BST
+from BST import BinarySearchTree
 
 MAX_SAMPLE_SIZE = 1000
 
@@ -65,7 +64,7 @@ if __name__ == '__main__':
 
     for i in range(MAX_SAMPLE_SIZE):
         n = i + 1
-        tree = BST()
+        tree = BinarySearchTree()
         fill(tree, n)
 
         gc.disable()
