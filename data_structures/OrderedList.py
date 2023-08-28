@@ -1,7 +1,8 @@
+from data_structures.DataStructure import DataStructure
 from data_structures.OrderedListNode import OrderedListNode
 
 
-class OrderedList:
+class OrderedList(DataStructure):
     def __init__(self):
         self.head = None
 
