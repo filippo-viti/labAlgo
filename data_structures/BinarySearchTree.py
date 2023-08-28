@@ -1,15 +1,16 @@
 from data_structures.BinarySearchTreeNode import BinarySearchTreeNode
+from data_structures.DataStructure import DataStructure
 
 
-class BinarySearchTree:
+class BinarySearchTree(DataStructure):
     def __init__(self):
         self.root = None
         self.__counter = 0
 
-    def insert(self, z):
+    def insert(self, value):
         y = None
         x = self.root
-        z = BinarySearchTreeNode(z)
+        z = BinarySearchTreeNode(value)
         while x is not None:
             y = x
             if z.key < x.key:

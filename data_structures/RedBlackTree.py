@@ -1,7 +1,8 @@
+from data_structures.DataStructure import DataStructure
 from data_structures.RedBlackTreeNode import RedBlackTreeNode
 
 
-class RedBlackTree:
+class RedBlackTree(DataStructure):
     def __init__(self):
         self.NIL = RedBlackTreeNode(None, False)
         self.NIL.size = 0
