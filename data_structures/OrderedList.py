@@ -5,15 +5,6 @@ class OrderedList:
     def __init__(self):
         self.head = None
 
-    def __str__(self):
-        r = ''
-        if self.head is not None:
-            current = self.head
-            while current is not None:
-                r += str(current.value) + ' '
-                current = current.next
-        return r
-
     def insert(self, value):
         new_node = OrderedListNode(value)
         if self.head is None:

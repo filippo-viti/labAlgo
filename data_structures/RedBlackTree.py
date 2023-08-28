@@ -8,7 +8,6 @@ class RedBlackTree:
         self.root = self.NIL
         self.root.p = self.NIL
 
-
     def left_rotate(self, x):
         y = x.right
         x.right = y.left
