@@ -56,7 +56,10 @@ def plot_by_data_structure(ds, algorithm, dataset_type):
         ax.set_ylim(0, 5000)
     ax.set_title('{} {} {}'.format(ds, algorithm, dataset_type))
     ax.legend()
-    plt.show()
+    ds_dir = os.path.join(graphs_dir, ds)
+    filename = '{}_{}.png'.format(algorithm, dataset_type)
+    plt.savefig(os.path.join(ds_dir, filename))
+    plt.close()
 
 
 def read_case(case, ds, algorithm, dataset_type):
@@ -80,16 +83,19 @@ def plot_by_case(case, algorithm, dataset_type):
     }
     for dsn in data_structure_names:
         x, ds_data = read_case(case, dsn, algorithm, dataset_type)
-        data[dsn] = (ds_data)
+        data[dsn] = ds_data
     fig, ax = plt.subplots()
     ax.plot(x, data['OL'], label='Ordered list')
     ax.plot(x, data['BST'], label='Binary search tree')
     ax.plot(x, data['RBT'], label='Red-black tree')
     ax.set_xlabel('n')
     ax.set_ylabel('time (ns)')
-    ax.set_title('{} {} case comparison {}'.format(algorithm, case, dst))
+    ax.set_title('{} {} case comparison {}'.format(algorithm, case, dataset_type))
     ax.legend()
-    plt.show()
+    comp_dir = os.path.join(graphs_dir, 'comparisons')
+    filename = '{}_{}_{}.png'.format(algorithm, case, dataset_type)
+    plt.savefig(os.path.join(comp_dir, filename))
+    plt.close()
 
 
 if __name__ == '__main__':
