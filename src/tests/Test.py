@@ -5,6 +5,7 @@ import time
 
 import yaml
 
+from src.tests.DatasetType import DatasetType
 from src.tests.Generator import Generator
 
 
@@ -71,14 +72,24 @@ class Test:
         header = ['n', 'worst', 'average', 'best']
         ds_dir_path = os.path.join(os.path.dirname(__file__), '..\\..\\measurements\\' + self.data_structure)
 
-        os_select_path = os.path.join(ds_dir_path, 'os_select.csv')
+        match self.dataset_type:
+            case DatasetType.RANDOM:
+                ds_type_string = 'rand'
+            case DatasetType.UNIQUE_RANDOM:
+                ds_type_string = 'urand'
+            case DatasetType.ORDERED:
+                ds_type_string = 'ord'
+            case DatasetType.REVERSED:
+                ds_type_string = 'rev'
+        os_select_path = os.path.join(ds_dir_path,
+                                      'os_select_{}_{}.csv'.format(len(times['os_select']), ds_type_string))
         with open(os_select_path, 'w', encoding='UTF8', newline='') as file:
             writer = csv.writer(file)
             writer.writerow(header)
             for t in times['os_select']:
                 writer.writerow(t)
 
-        os_rank_path = os.path.join(ds_dir_path, 'os_rank.csv')
+        os_rank_path = os.path.join(ds_dir_path, 'os_rank_{}_{}.csv'.format(len(times['os_rank']), ds_type_string))
         with open(os_rank_path, 'w', encoding='UTF8', newline='') as file:
             writer = csv.writer(file)
             writer.writerow(header)
