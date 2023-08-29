@@ -1,5 +1,5 @@
-from data_structures.DataStructure import DataStructure
-from data_structures.OrderedListNode import OrderedListNode
+from src.data_structures.DataStructure import DataStructure
+from src.data_structures.OrderedListNode import OrderedListNode
 
 
 class OrderedList(DataStructure):

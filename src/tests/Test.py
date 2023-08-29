@@ -5,7 +5,7 @@ import time
 
 import yaml
 
-from tests.Generator import Generator
+from src.tests.Generator import Generator
 
 
 class Test:
@@ -69,7 +69,7 @@ class Test:
     def __write_results(self, times):
         print('Writing results...')
         header = ['n', 'worst', 'average', 'best']
-        ds_dir_path = os.path.join(os.path.dirname(__file__), '..\\measurements\\' + self.data_structure)
+        ds_dir_path = os.path.join(os.path.dirname(__file__), '..\\..\\measurements\\' + self.data_structure)
 
         os_select_path = os.path.join(ds_dir_path, 'os_select.csv')
         with open(os_select_path, 'w', encoding='UTF8', newline='') as file:

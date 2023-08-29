@@ -1,9 +1,9 @@
 import random
 
-from data_structures.BinarySearchTree import BinarySearchTree
-from data_structures.OrderedList import OrderedList
-from data_structures.RedBlackTree import RedBlackTree
-from tests.DatasetType import DatasetType
+from src.data_structures.BinarySearchTree import BinarySearchTree
+from src.data_structures.OrderedList import OrderedList
+from src.data_structures.RedBlackTree import RedBlackTree
+from src.tests.DatasetType import DatasetType
 
 
 class Generator:

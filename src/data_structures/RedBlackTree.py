@@ -1,5 +1,5 @@
-from data_structures.DataStructure import DataStructure
-from data_structures.RedBlackTreeNode import RedBlackTreeNode
+from src.data_structures.DataStructure import DataStructure
+from src.data_structures.RedBlackTreeNode import RedBlackTreeNode
 
 
 class RedBlackTree(DataStructure):

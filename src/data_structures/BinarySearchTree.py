@@ -1,5 +1,5 @@
-from data_structures.BinarySearchTreeNode import BinarySearchTreeNode
-from data_structures.DataStructure import DataStructure
+from src.data_structures.BinarySearchTreeNode import BinarySearchTreeNode
+from src.data_structures.DataStructure import DataStructure
 
 
 class BinarySearchTree(DataStructure):

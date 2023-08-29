@@ -1,7 +1,7 @@
 from datetime import datetime
 
-from tests.DatasetType import DatasetType
-from tests.Test import Test
+from src.tests.DatasetType import DatasetType
+from src.tests.Test import Test
 
 plot_only = False
 

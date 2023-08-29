@@ -6,7 +6,7 @@ from datetime import datetime
 import matplotlib.pyplot as plt
 import numpy as np
 
-from data_structures.BinarySearchTree import BinarySearchTree
+from src.data_structures.BinarySearchTree import BinarySearchTree
 
 MAX_SAMPLE_SIZE = 1000
 

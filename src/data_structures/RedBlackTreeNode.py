@@ -1,4 +1,4 @@
-from data_structures.BinarySearchTreeNode import BinarySearchTreeNode
+from src.data_structures.BinarySearchTreeNode import BinarySearchTreeNode
 
 
 class RedBlackTreeNode(BinarySearchTreeNode):
