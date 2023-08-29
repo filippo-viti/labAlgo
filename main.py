@@ -8,8 +8,9 @@ from matplotlib import pyplot as plt
 from src.tests.DatasetType import DatasetType
 from src.tests.Test import Test
 
-plot_only = False
 data_structure_names = ['OL', 'BST', 'RBT']
+dataset_types = ['rand', 'urand', 'ord', 'rev']
+graphs_dir = os.path.join(os.path.dirname(__file__), 'graphs')
 
 
 def run_all_tests():
@@ -27,11 +28,11 @@ def run_all_tests():
     print("Total time = " + str(elapsed_time) + " s")
 
 
-def read_data(ds):
+def read_data_structure(ds, algorithm, dataset_type):
     x = []
     data = [[], [], []]
     measurements_dir = os.path.join(os.path.dirname(__file__), 'measurements')
-    csv_path = os.path.join(measurements_dir, ds + '\\os_select_1000_urand.csv')
+    csv_path = os.path.join(measurements_dir, ds + '\\' + algorithm + '_1000_' + dataset_type + '.csv')
     with open(csv_path, 'r') as file:
         lines = csv.reader(file, delimiter=',')
         next(lines, None)
@@ -43,9 +44,8 @@ def read_data(ds):
     return x, data
 
 
-def plot(ds):
-    graphs_dir = os.path.join(os.path.dirname(__file__), 'graphs')
-    x, data = read_data(ds)
+def plot_by_data_structure(ds, algorithm, dataset_type):
+    x, data = read_data_structure(ds, algorithm, dataset_type)
     fig, ax = plt.subplots()
     ax.plot(x, data[0], label='Worst case')
     ax.plot(x, data[1], label='Average case')
@@ -54,15 +54,57 @@ def plot(ds):
     ax.set_ylabel('time (ns)')
     if ds == 'RBT':
         ax.set_ylim(0, 5000)
-    ax.set_title('OS_SELECT')
+    ax.set_title('{} {} {}'.format(ds, algorithm, dataset_type))
+    ax.legend()
+    plt.show()
+
+
+def read_case(case, ds, algorithm, dataset_type):
+    x = []
+    data = []
+    measurements_dir = os.path.join(os.path.dirname(__file__), 'measurements')
+    csv_path = os.path.join(measurements_dir, ds + '\\' + algorithm + '_1000_' + dataset_type + '.csv')
+    with open(csv_path, 'r') as file:
+        lines = csv.DictReader(file, delimiter=',')
+        for row in lines:
+            x.append(int(row['n']))
+            data.append(int(row[case]))
+    return x, data
+
+
+def plot_by_case(case, algorithm, dataset_type):
+    data = {
+        'OL': [],
+        'BST': [],
+        'RBT': []
+    }
+    for dsn in data_structure_names:
+        x, ds_data = read_case(case, dsn, algorithm, dataset_type)
+        data[dsn] = (ds_data)
+    fig, ax = plt.subplots()
+    ax.plot(x, data['OL'], label='Ordered list')
+    ax.plot(x, data['BST'], label='Binary search tree')
+    ax.plot(x, data['RBT'], label='Red-black tree')
+    ax.set_xlabel('n')
+    ax.set_ylabel('time (ns)')
+    ax.set_title('{} {} case comparison {}'.format(algorithm, case, dst))
     ax.legend()
     plt.show()
 
 
 if __name__ == '__main__':
-    sys.setrecursionlimit(1100)
-    if not plot_only:
+    answer = input('Rerun tests? (Y/N): ')
+    rerun = answer == 'Y'
+    if rerun:
+        sys.setrecursionlimit(1100)
         run_all_tests()
+    for dsn in data_structure_names:
+        for dst in dataset_types:
+            plot_by_data_structure(dsn, 'os_select', dst)
+            plot_by_data_structure(dsn, 'os_rank', dst)
 
-    for ds in data_structure_names:
-        plot(ds)
+    for dst in dataset_types:
+        plot_by_case('worst', 'os_select', dst)
+        plot_by_case('worst', 'os_rank', dst)
+        plot_by_case('average', 'os_select', dst)
+        plot_by_case('average', 'os_rank', dst)
