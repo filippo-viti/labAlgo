@@ -44,6 +44,7 @@ class Test:
         print()
         self.__write_results(times)
 
+
     def __run_repetitions(self, ds, case_i, rep):
         current_n_times = {
             'os_select': [],
@@ -51,14 +52,14 @@ class Test:
         }
         gc.disable()
         for i in range(rep):
-            start = time.perf_counter()
+            start = time.perf_counter_ns()
             x = ds.os_select(case_i)
-            end = time.perf_counter()
+            end = time.perf_counter_ns()
             current_n_times['os_select'].append(end - start)
 
-            start = time.perf_counter()
+            start = time.perf_counter_ns()
             ds.os_rank(x)
-            end = time.perf_counter()
+            end = time.perf_counter_ns()
             current_n_times['os_rank'].append(end - start)
         min_times = {
             'os_select': min(current_n_times['os_select']),
