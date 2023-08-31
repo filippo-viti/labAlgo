@@ -25,12 +25,6 @@ class BinarySearchTree(DataStructure):
         else:
             y.right = z
 
-    def print_inorder(self, x):
-        if x:
-            self.print_inorder(x.left)
-            print(x.key, end=" ")
-            self.print_inorder(x.right)
-
     def os_select(self, i):
         self.__counter = 0
         return self.__os_select_tree_walk(self.root, i)
