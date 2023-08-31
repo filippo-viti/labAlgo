@@ -69,7 +69,6 @@ class Test:
         return min_times
 
     def __write_results(self, times):
-        print('Writing results...')
         header = ['n', 'worst', 'average', 'best']
         ds_dir_path = os.path.join(os.path.dirname(__file__), '..\\..\\measurements\\' + self.data_structure)
 

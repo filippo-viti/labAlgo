@@ -9,4 +9,4 @@ dinamiche:
 Nota: La lista deve essere implementata considerando strutture
 collegate con puntatori e non la struttura dati lista di Python.
 
-Istruzioni: eseguire il file main.py
+Istruzioni: eseguire il file main.py. Potrebbero verificarsi errori per via di pacchetti mancanti, installarli tramite pip

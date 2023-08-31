@@ -99,11 +99,8 @@ def plot_by_case(case, algorithm, dataset_type):
 
 
 if __name__ == '__main__':
-    answer = input('Rerun tests? (Y/N): ')
-    rerun = answer == 'Y'
-    if rerun:
-        sys.setrecursionlimit(1100)
-        run_all_tests()
+    sys.setrecursionlimit(1100)
+    run_all_tests()
     for dsn in data_structure_names:
         for dst in dataset_types:
             plot_by_data_structure(dsn, 'os_select', dst)
